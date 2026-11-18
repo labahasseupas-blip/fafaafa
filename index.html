@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f7">
+  <title>윈도우 로고와 화면 이야기</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <style>
+    :root{color-scheme:light;--bg:#f5f5f7;--paper:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--soft:#e8f2fc;--mono:"SFMono-Regular",Consolas,monospace}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif;line-height:1.6;letter-spacing:-.015em;word-break:keep-all}a{color:inherit;text-decoration:none}button{font:inherit}
+    .shell{width:min(1060px,calc(100% - 48px));margin:auto}.top{height:54px;position:sticky;top:0;z-index:40;background:#f5f5f7e8;border-bottom:1px solid #0000000c;backdrop-filter:saturate(180%) blur(18px)}.top-in{height:100%;display:flex;align-items:center;justify-content:space-between}.wordmark{font-size:14px;font-weight:650;letter-spacing:.01em}.wordmark b{font-weight:750;color:var(--blue)}.nav{display:flex;gap:25px;color:#424245;font-size:14px}.nav a:hover{color:var(--blue)}
+    .hero{padding:100px 0 86px;display:grid;grid-template-columns:1fr 210px;gap:48px;align-items:center;border-bottom:1px solid var(--line)}.overline,.label{font:600 13px/1.4 var(--mono);letter-spacing:.06em;color:#6e6e73}h1{font-size:clamp(44px,7vw,76px);line-height:1.02;letter-spacing:-.065em;margin:18px 0 22px;font-weight:700;color:#1d1d1f}.hero p{max-width:650px;color:#515154;font-size:19px;margin:0;line-height:1.75}.hero p strong{color:#1d1d1f;font-weight:650}.hero-logo{width:180px;height:145px;display:grid;place-items:center}.hero-logo svg{width:118px;filter:drop-shadow(0 8px 12px #0071e322);transform:perspective(700px) rotateY(-12deg) rotateX(7deg)}.hero-note{margin-top:15px;color:#86868b;font:12px var(--mono);text-align:center;letter-spacing:.08em}
+    .intro{padding:35px 0;display:grid;grid-template-columns:180px 1fr;gap:30px;border-bottom:1px solid var(--line)}.intro h2{margin:0;font-size:16px;letter-spacing:-.02em}.intro p{margin:0;color:#515154;font-size:16px;max-width:760px}.intro strong{color:#1d1d1f;font-weight:650}
+    .archive{padding:72px 0 78px}.section-top{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:26px}.section-top h2{font-size:34px;letter-spacing:-.05em;margin:7px 0 0;font-weight:650}.section-top p{color:var(--muted);font-size:14px;margin:0 0 3px}.period{padding:13px 0 9px;border-top:1px solid var(--line);color:#4b5563;font:650 16px/1.4 "Segoe UI","Malgun Gothic",sans-serif;letter-spacing:-.025em}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.era{background:var(--paper);border:1px solid #e3e3e6;border-radius:17px;min-height:224px;display:flex;flex-direction:column;overflow:hidden;perspective:900px;transition:border-color .22s,box-shadow .22s,transform .22s}.era:hover{border-color:#c6d6e7;box-shadow:0 12px 28px #1d1d1f0e;transform:translateY(-2px)}.mark-area{height:126px;background:#fafafa;border-bottom:1px solid #ececef;display:grid;place-items:center;overflow:hidden;perspective:650px}.mark{width:150px;height:90px;max-width:82%;max-height:84%;object-fit:contain;filter:drop-shadow(0 5px 4px #00000016);transform:perspective(700px) rotateY(-4deg) rotateX(2deg) translateZ(4px);transform-style:preserve-3d;transition:transform .3s ease,filter .3s ease}.era[data-style="word"] .mark{width:220px;height:72px}.era[data-style="flag"] .mark{width:170px;height:92px}.era[data-style="flat"] .mark{width:190px;height:78px}.era[data-style="square"] .mark{width:125px;height:92px}.era:hover .mark{transform:perspective(700px) rotateY(-9deg) rotateX(6deg) translateZ(13px) scale(1.04);filter:drop-shadow(5px 10px 5px #00000020)}.era-copy{padding:15px 17px 17px}.era-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.era h3{font-size:17px;line-height:1.3;margin:0;font-weight:650}.year{color:#86868b;font:12px var(--mono);white-space:nowrap}.era-copy p{font-size:14px;line-height:1.6;color:#6e6e73;margin:7px 0 0}.no-break{white-space:nowrap}
+    .note{padding:16px 18px;border:1px solid #e3e3e6;border-radius:12px;background:#fff;color:#6e6e73;font-size:14px;line-height:1.75;margin-top:23px}.note b{color:#1d1d1f;font-weight:650}.note a{color:var(--blue)}.simple{padding:58px 0;border-top:1px solid var(--line)}.simple h2{font-size:29px;margin:7px 0 21px;letter-spacing:-.045em;font-weight:650}.simple-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.simple-card{padding:18px 17px;border:1px solid #e3e3e6;border-radius:14px;background:#fff}.simple-card b{font-size:15px;font-weight:650}.simple-card p{color:#6e6e73;font-size:14px;line-height:1.7;margin:8px 0 0}.shortcuts{display:flex;gap:9px;flex-wrap:wrap}.shortcut{border:1px solid #d2d2d7;border-radius:8px;padding:10px 13px;color:#515154;background:#fff;font-size:14px}.shortcut kbd{font:13px var(--mono);color:#1d1d1f;margin-right:9px}
+    
+    footer{border-top:1px solid var(--line);padding:22px 0 30px;color:#86868b;font-size:13px}footer .foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}footer a{color:var(--blue)}
+    @media(max-width:760px){.hero{grid-template-columns:1fr 130px;gap:18px;padding:68px 0}.hero-logo{width:130px;height:120px}.hero-logo svg{width:90px}.intro{grid-template-columns:1fr;gap:8px}.cards{grid-template-columns:repeat(2,1fr)}.simple-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.shell{width:calc(100% - 30px)}.nav{gap:12px;font-size:12px}.hero{grid-template-columns:1fr;padding:52px 0}.hero-logo{display:none}.hero p{font-size:15px}.section-top{align-items:start;flex-direction:column}.section-top h2{font-size:27px}.cards{grid-template-columns:1fr 1fr;gap:9px}.era{min-height:205px}.mark-area{height:105px}.era-copy{padding:12px}.era h3{font-size:15px}.era-copy p{font-size:13px}.year{font-size:11px}.simple-grid{grid-template-columns:1fr 1fr}.simple-card{padding:14px}.archive{padding:55px 0 60px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.era,.mark{transition:none}}
+    @media(hover:none){.era:active .mark{transform:perspective(700px) rotateY(-12deg) rotateX(8deg) translateZ(16px) scale(1.06);filter:drop-shadow(6px 12px 6px #00000026)}.era:active{transform:translateY(-2px);box-shadow:0 12px 28px #1d1d1f16}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="shell top-in"><a class="wordmark" href="#top"><b>EXE</b> · 윈도우 기록</a><nav class="nav"><a href="#logos">로고 기록</a><a href="#basics">윈도우란</a><a href="#tips">바로가기</a></nav></div></header>
+  <main id="top">
+    <section class="shell hero"><div><div class="overline">윈도우 로고 · 1985—2021</div><h1>작은 창부터<br>Windows 11까지.</h1><p><strong>윈도우가 처음 나온 때부터 Windows 11까지</strong> 로고를 따라가며 살펴보는 <span class="no-break">기록장입니다.</span> 시작 메뉴와 파일 탐색기처럼 익숙한 기능도 간단히 소개합니다.</p></div><div><div class="hero-logo" aria-label="Windows 네 개 창 로고"><svg viewBox="0 0 120 104" role="img" aria-label="입체감 있는 파란 Windows 창문 로고"><defs><linearGradient id="windowFace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#54b9fa"/><stop offset="1" stop-color="#0870c9"/></linearGradient><filter id="windowShadow" x="-20%" y="-20%" width="150%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#153a5a" flood-opacity=".25"/></filter></defs><g transform="translate(4 5)" fill="#07518c"><path d="M12 18 51 12v32H12zM58 11l46-7v40H58zM12 50h39v35l-39-6zM58 50h46v44l-46-8z"/></g><g fill="url(#windowFace)" stroke="#fff" stroke-opacity=".5" stroke-width="1" filter="url(#windowShadow)"><path d="M12 18 51 12v32H12zM58 11l46-7v40H58zM12 50h39v35l-39-6zM58 50h46v44l-46-8z"/></g></svg></div><div class="hero-note">1985년부터 Windows 11까지</div></div></section>
+    <section class="shell intro"><h2>이 페이지는 어떤 곳인가요?</h2><p>윈도우는 컴퓨터 화면에서 앱을 열고, 파일을 찾고, 여러 창을 오가게 해주는 운영체제입니다. 아래에는 <strong>주요 Windows 버전과 그 시기에 쓰인 로고</strong>를 순서대로 정리했습니다. 실제 로고 이미지는 Wikimedia Commons에서 가져왔습니다.</p></section>
+    <section class="shell archive" id="logos"><div class="section-top"><div><div class="label">01 · 로고의 변화</div><h2>윈도우 로고의 변화</h2></div><p>1985 → 지금</p></div><div id="timeline"></div><div class="note"><b>로고 이야기</b>　초기에는 이름과 창문 그림을 함께 사용했고, 1990년대에는 색색의 깃발 모양이 유명해졌습니다. Windows 8부터는 단순한 창 모양으로 바뀌었고, Windows 11에서는 네 칸이 반듯해졌습니다. 파일별 출처와 이용 조건은 <a href="assets/CREDITS.txt" target="_blank" rel="noopener">이미지 출처</a>에 정리했습니다.</div></section>
+    <section class="simple" id="basics"><div class="shell"><div class="label">02 · 화면 구성</div><h2>화면에서 자주 만나는 곳</h2><div class="simple-grid"><article class="simple-card"><b>바탕 화면</b><p>컴퓨터에 로그인하면 처음 보이는 화면입니다. 아이콘과 파일을 둘 수 있습니다.</p></article><article class="simple-card"><b>시작 메뉴</b><p>앱을 찾거나 설정을 열고, 컴퓨터를 끌 때 사용하는 메뉴입니다.</p></article><article class="simple-card"><b>작업 표시줄</b><p>열려 있는 앱을 확인하고 다른 창으로 바꾸는 줄입니다.</p></article><article class="simple-card"><b>파일 탐색기</b><p>사진, 문서, 다운로드한 파일을 찾아보는 폴더 창입니다.</p></article></div></div></section>
+    <section class="simple" id="tips"><div class="shell"><div class="label">03 · 키보드 단축키</div><h2>키보드로 바로 열기</h2><div class="shortcuts"><div class="shortcut"><kbd>Win + E</kbd>파일 탐색기</div><div class="shortcut"><kbd>Alt + Tab</kbd>열린 앱 바꾸기</div><div class="shortcut"><kbd>Win + L</kbd>화면 잠그기</div></div></div></section>
+  </main>
+  <footer><div class="shell foot"><span>EXE · 윈도우 이야기</span><a href="https://learn.microsoft.com/en-us/shows/history/" target="_blank" rel="noopener noreferrer">Microsoft 역사 자료 ↗</a></div></footer>
+  <script>
+    const periods=[
+      {label:'윈도우 초창기 (1980년대)',items:[
+        ['Windows 1.0','1985','MS-DOS 화면 위에 창을 겹쳐 쓰기 시작한 첫 버전입니다.','word','초기 창 모양'],
+        ['Windows 2.0','1987','창을 겹쳐 놓고 키보드 단축키도 쓸 수 있게 됐습니다.','word','초기 창 모양']
+      ]},
+      {label:'윈도우 3.1·95·98 시절',items:[
+        ['Windows 3.0','1990','아이콘과 프로그램 관리 화면이 널리 알려졌습니다.','flag','컬러 창'],
+        ['Windows 3.1','1992','글꼴과 멀티미디어 기능이 더해졌습니다.','flag','컬러 창'],
+        ['Windows 95','1995','시작 메뉴와 작업 표시줄이 등장했습니다.','flag','깃발 로고'],
+        ['Windows 98','1998','인터넷과 주변 기기를 쓰기 편하게 다듬었습니다.','flag','깃발 로고'],
+        ['Windows 2000','2000','회사와 학교에서 많이 쓰인 안정적인 버전입니다.','flag','깃발 로고'],
+        ['Windows Me','2000','집에서 음악과 사진을 즐기는 기능을 강조했습니다.','flag','깃발 로고']
+      ]},
+      {label:'XP·비스타·7 시절',items:[
+        ['Windows XP','2001','파란 시작 메뉴와 초록 언덕 배경으로 유명합니다.','flag','XP 컬러 깃발'],
+        ['Windows Vista','2007','반짝이는 유리 느낌의 화면과 시작 버튼이 특징입니다.','flag','빛나는 깃발'],
+        ['Windows 7','2009','작업 표시줄을 다듬어 사용하기 편하다는 평가를 받았습니다.','flag','빛나는 깃발']
+      ]},
+      {label:'윈도우 8·10 시절',items:[
+        ['Windows 8','2012','시작 화면에 큰 타일을 배치했습니다. 로고도 평평한 창으로 바뀌었습니다.','flat','파란 창'],
+        ['Windows 8.1','2013','시작 버튼을 다시 넣고 화면을 조금 다듬었습니다.','flat','파란 창'],
+        ['Windows 10','2015','시작 메뉴가 돌아오고 여러 기기에서 익숙하게 사용할 수 있었습니다.','flat','파란 창']
+      ]},
+      {label:'윈도우 11',items:[
+        ['Windows 11','2021','네 칸이 반듯한 창 로고와 가운데 정렬된 작업 표시줄이 특징입니다.','square','네 칸 창']
+      ]}
+    ];
+    function logo(title,style){
+      const files={
+        'Windows 1.0':'windows-1985.svg','Windows 2.0':'windows-1985.svg','Windows 3.0':'windows-1990.webp','Windows 3.1':'windows-1992.webp',
+        'Windows 95':'windows-1992.webp','Windows 98':'windows-1992.webp','Windows 2000':'windows-2000.png','Windows Me':'windows-2000.png',
+        'Windows XP':'windows-xp.webp','Windows Vista':'windows-vista.webp','Windows 7':'windows-7.webp','Windows 8':'windows-8.webp',
+        'Windows 8.1':'windows-8.webp','Windows 10':'windows-10.webp','Windows 11':'windows-11.webp'
+      };
+      return `<img class="mark" src="assets/${files[title]}" alt="${title} 로고" loading="lazy">`;
+    }
+    const target=document.querySelector('#timeline');
+    target.innerHTML=periods.map((period)=>`<div class="period">${period.label}</div><div class="cards">${period.items.map((item)=>`<article class="era" data-style="${item[3]}"><div class="mark-area">${logo(item[0],item[3])}</div><div class="era-copy"><div class="era-head"><h3>${item[0]}</h3><span class="year">${item[1]}</span></div><p>${item[2]}</p></div></article>`).join('')}</div>`).join('');
+  </script>
+</body>
+</html>
+
