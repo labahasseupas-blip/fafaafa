@@ -1,0 +1,17 @@
+WINDOWS LOGO IMAGE CREDITS
+
+These images were collected from Wikimedia Commons file pages. The file pages mark the logos as public-domain text/geometric logos; Microsoft trademarks may still apply. The .webp files are Wikimedia thumbnail conversions of the linked originals.
+
+Asset                  Wikimedia Commons source
+windows-1985.svg       https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_(1985-1989).svg
+windows-1990.webp      https://commons.wikimedia.org/wiki/File:Windows_logo_and_wordmark_-_1990.svg
+windows-1992.webp      https://commons.wikimedia.org/wiki/File:Windows_Logo_(1992-2001).svg
+windows-2000.png       https://commons.wikimedia.org/wiki/File:Windows_2000_logo_with_wordmark.png
+windows-xp.webp        https://commons.wikimedia.org/wiki/File:Windows_XP_wordmark.svg
+windows-vista.webp     https://commons.wikimedia.org/wiki/File:Microsoft_Windows_Vista_wordmark.svg
+windows-7.webp         https://commons.wikimedia.org/wiki/File:Microsoft_Windows_7_wordmark.svg
+windows-8.webp         https://commons.wikimedia.org/wiki/File:Windows_8_logo_and_wordmark.svg
+windows-10.webp        https://commons.wikimedia.org/wiki/File:Windows_10_Logo.svg
+windows-11.webp        https://commons.wikimedia.org/wiki/File:Windows_11_logo.svg
+
+Some neighboring releases used the same Windows symbol, so the site reuses a logo for Windows 3.1/95/98, Windows 2000/Me, and Windows 8/8.1. Product names and release years are shown separately.
