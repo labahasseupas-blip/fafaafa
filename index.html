@@ -251,6 +251,7 @@
     .developer-inner{transform-style:preserve-3d}
     .developer-photo img{transform:translateZ(22px) scale(1.04);filter:drop-shadow(0 10px 10px #0009);transition:transform .3s cubic-bezier(.22,1,.36,1),filter .3s}
     .developer-card.base-tilt:hover .developer-photo img,.developer-card.base-tilt:active .developer-photo img{transform:translateY(-5px) translateZ(42px) scale(1.1);filter:drop-shadow(0 17px 14px #000b)}
+    @media(hover:none){.era{touch-action:pan-y}.era.touch-tilt{transform:perspective(1000px) rotateX(var(--touch-x,0deg)) rotateY(var(--touch-y,0deg)) translateY(-2px)!important;box-shadow:0 15px 32px #0008!important}.developer-card.base-tilt{touch-action:pan-y}}
     @media(prefers-reduced-motion:reduce){.era .mark,.developer-photo img,.developer-card.base-tilt{transition:none}}
     *{cursor:url("assets/cursor-windows.png") 24 24, auto !important}
   </style>
@@ -300,15 +301,18 @@
     target.innerHTML=periods.map(period=>`<section class="period-group" data-period="${period.key}"><div class="period">${period.label}</div><div class="cards">${period.items.map(item=>`<article class="era" tabindex="0" role="button" data-era="${period.key}" data-title="${item[0]}" aria-label="${item[0]} 상세 보기"><div class="tilt-inner"><div class="mark-area">${image(item[0])}</div><div class="era-copy"><div class="era-head"><h3>${item[0]}</h3><span class="year">${item[1]}</span></div><p>${item[2]}</p></div></div></article>`).join('')}</div></section>`).join('');
     const cards=[...target.querySelectorAll('.era')];
     const popLogo=card=>{card.classList.remove('logo-pop');void card.offsetWidth;card.classList.add('logo-pop');setTimeout(()=>card.classList.remove('logo-pop'),750)};
-    cards.forEach(card=>{card.addEventListener('click',()=>popLogo(card));card.addEventListener('keydown',event=>{if(event.target===card&&(event.key==='Enter'||event.key===' ')){event.preventDefault();popLogo(card)}})});
+    cards.forEach(card=>{card.addEventListener('click',()=>popLogo(card));card.addEventListener('keydown',event=>{if(event.target===card&&(event.key==='Enter'||event.key===' ')){event.preventDefault();popLogo(card)}});let touchTimer;const release=()=>{clearTimeout(touchTimer);touchTimer=setTimeout(()=>card.classList.remove('touch-tilt'),320)};card.addEventListener('pointerdown',event=>{if(event.pointerType!=='touch')return;const r=card.getBoundingClientRect();const x=(event.clientX-r.left)/r.width-.5;const y=(event.clientY-r.top)/r.height-.5;card.style.setProperty('--touch-x',`${(-y*7).toFixed(2)}deg`);card.style.setProperty('--touch-y',`${(x*7).toFixed(2)}deg`);card.classList.add('touch-tilt')});card.addEventListener('pointermove',event=>{if(event.pointerType!=='touch'||event.buttons===0)return;const r=card.getBoundingClientRect();const x=(event.clientX-r.left)/r.width-.5;const y=(event.clientY-r.top)/r.height-.5;card.style.setProperty('--touch-x',`${(-y*7).toFixed(2)}deg`);card.style.setProperty('--touch-y',`${(x*7).toFixed(2)}deg`)});card.addEventListener('pointerup',release);card.addEventListener('pointercancel',release)});
     const snowLayer=document.querySelector('.snowfall');const reduceSnow=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!reduceSnow){const snowCount=Math.min(72,Math.max(34,Math.round(window.innerWidth/16)));for(let i=0;i<snowCount;i++){const flake=document.createElement('i');flake.className='flake';flake.style.setProperty('--left',Math.random()*100+'vw');flake.style.setProperty('--size',(2+Math.random()*5)+'px');flake.style.setProperty('--alpha',(0.35+Math.random()*0.6).toFixed(2));flake.style.setProperty('--duration',(7+Math.random()*13)+'s');flake.style.setProperty('--delay',(-Math.random()*18)+'s');flake.style.setProperty('--drift',(-55+Math.random()*110)+'px');snowLayer.append(flake)}}
     const baseCard=document.querySelector('.developer-card');
     baseCard.classList.add('base-tilt');
     const resetBaseTilt=()=>{baseCard.style.setProperty('--base-tilt-x','0deg');baseCard.style.setProperty('--base-tilt-y','0deg')};
-    baseCard.addEventListener('pointermove',event=>{if(event.pointerType==='touch')return;const r=baseCard.getBoundingClientRect();const x=(event.clientX-r.left)/r.width-.5;const y=(event.clientY-r.top)/r.height-.5;baseCard.style.setProperty('--base-tilt-x',`${(-y*6).toFixed(2)}deg`);baseCard.style.setProperty('--base-tilt-y',`${(x*6).toFixed(2)}deg`)});
+    const tiltBaseAt=event=>{const r=baseCard.getBoundingClientRect();const x=(event.clientX-r.left)/r.width-.5;const y=(event.clientY-r.top)/r.height-.5;baseCard.style.setProperty('--base-tilt-x',`${(-y*6).toFixed(2)}deg`);baseCard.style.setProperty('--base-tilt-y',`${(x*6).toFixed(2)}deg`)};
+    baseCard.addEventListener('pointermove',event=>{if(event.pointerType==='touch'){if(event.buttons>0)tiltBaseAt(event);return}tiltBaseAt(event)});
     baseCard.addEventListener('pointerleave',resetBaseTilt);
-    baseCard.addEventListener('pointerdown',event=>{if(event.pointerType!=='touch')return;const r=baseCard.getBoundingClientRect();const x=(event.clientX-r.left)/r.width-.5;const y=(event.clientY-r.top)/r.height-.5;baseCard.style.setProperty('--base-tilt-x',`${(-y*6).toFixed(2)}deg`);baseCard.style.setProperty('--base-tilt-y',`${(x*6).toFixed(2)}deg`);setTimeout(resetBaseTilt,420)});
+    baseCard.addEventListener('pointerdown',event=>{if(event.pointerType!=='touch')return;tiltBaseAt(event)});
+    baseCard.addEventListener('pointerup',()=>setTimeout(resetBaseTilt,320));
+    baseCard.addEventListener('pointercancel',resetBaseTilt);
   </script>
 </body>
 </html>
